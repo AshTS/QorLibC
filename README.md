@@ -28,7 +28,7 @@ The Lib C Implementation for the Qor Kernel
 
 - [ ] `<stddef.h>` Common macro definitions
 
-- [ ] `<stdint.h>` Fixed-width integer types
+- [x] `<stdint.h>` Fixed-width integer types
 
 - [ ] `<stdio.h>` Input/output
 
