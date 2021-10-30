@@ -24,7 +24,7 @@ The Lib C Implementation for the Qor Kernel
 
 - [ ] `<stdarg.h>` Variable arguments
 
-- [ ] `<stdbool.h>` Macros for boolean type
+- [x] `<stdbool.h>` Macros for boolean type
 
 - [x] `<stddef.h>` Common macro definitions
 
