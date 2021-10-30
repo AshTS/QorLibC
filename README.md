@@ -26,7 +26,7 @@ The Lib C Implementation for the Qor Kernel
 
 - [ ] `<stdbool.h>` Macros for boolean type
 
-- [ ] `<stddef.h>` Common macro definitions
+- [x] `<stddef.h>` Common macro definitions
 
 - [x] `<stdint.h>` Fixed-width integer types
 
