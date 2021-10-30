@@ -22,7 +22,7 @@ The Lib C Implementation for the Qor Kernel
 
 - [ ] `<signal.h>` Signal handling
 
-- [ ] `<stdarg.h>` Variable arguments
+- [x] `<stdarg.h>` Variable arguments
 
 - [x] `<stdbool.h>` Macros for boolean type
 
