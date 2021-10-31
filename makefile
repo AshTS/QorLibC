@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS = --target=riscv64 -march=rv64gc -mno-relax -fPIC
-INCLUDE = -isystem include
+INCLUDE = 
 
 LINK = ld.lld
 LINKFLAGS = -r
@@ -15,10 +15,10 @@ SRC_DIR = src
 _LIBS = 
 LIBS = $(patsubst %,$(LIB_DIR)/%,$(_LIBS))
 
-_OBJ = 
+_OBJ = syscalls.o
 OBJ = $(patsubst %,$(BUILD_DIR)/%,$(_OBJ))
 
-$(OUTPUT_DIR)/libc : $(BUILD_DIR) $(OBJ) $(LIBS)
+$(OUTPUT_DIR)/libc : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
 	$(LINK) $(LINKFLAGS) $(OBJ) $(LIBS) -o $@
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(INCLUDES)
@@ -29,6 +29,9 @@ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.s $(INCLUDES)
 
 $(BUILD_DIR) :
 	[ ! -d "$(BUILD_DIR)" ] && mkdir $(BUILD_DIR)
+
+$(OUTPUT_DIR) :
+	[ ! -d "$(OUTPUT_DIR)" ] && mkdir $(OUTPUT_DIR)
 
 
 .PHONY: clean
