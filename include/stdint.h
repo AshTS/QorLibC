@@ -37,11 +37,11 @@ typedef unsigned long uint_fast64_t;
 typedef unsigned long uint_least64_t;
 
 
-typedef intmax_t long;
-typedef intptr_t long;
+typedef long intmax_t;
+typedef long intptr_t;
 
-typedef uintmax_t unsigned long;
-typedef uintptr_t unsigned long;
+typedef unsigned long uintmax_t;
+typedef unsigned long uintptr_t;
 
 #define __INT64_C(num) c ## L
 #define __UINT64_C(num) c ## UL
