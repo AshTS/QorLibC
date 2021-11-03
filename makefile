@@ -15,7 +15,7 @@ SRC_DIR = src
 _LIBS = 
 LIBS = $(patsubst %,$(LIB_DIR)/%,$(_LIBS))
 
-_OBJ = syscalls.o
+_OBJ = string.o syscalls.o
 OBJ = $(patsubst %,$(BUILD_DIR)/%,$(_OBJ))
 
 $(OUTPUT_DIR)/libc : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
