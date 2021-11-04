@@ -29,7 +29,7 @@ FILE* fopen(const char* name, const char* mode)
 
     if (strcmp(mode, "w") == 0 || strcmp(mode, "wd") == 0)
     {
-        raw_mode = O_WRONLY | O_CREAT;
+        raw_mode = O_WRONLY | O_CREAT | O_TRUNC;
     }
     else if (strcmp(mode, "r") == 0 || strcmp(mode, "rd") == 0)
     {
