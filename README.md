@@ -4,11 +4,11 @@ The Lib C Implementation for the Qor Kernel
 ## Progress
 
 
-- [ ] `<assert.h>` Conditionally compiled macro that compares its argument to zero
+- [x] `<assert.h>` Conditionally compiled macro that compares its argument to zero
 
 - [ ] `<ctype.h>` Functions to determine the type contained in character data
 
-- [ ] `<errno.h>` Macros reporting error conditions
+- [x] `<errno.h>` Macros reporting error conditions
 
 - [ ] `<float.h>` Limits of float types
 
