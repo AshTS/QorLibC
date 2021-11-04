@@ -224,9 +224,9 @@ void printf_helper(char* buffer, unsigned int* index, char c, int fd)
     }
 }
 
-#define FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, fd)
+#define FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, stream->fd)
 
-int fprintf(FILE_PTR fd, const char *format, ...)
+int fprintf(FILE* stream, const char *format, ...)
 {
     PRINTF_IMPL(FPRINTF_HELPER)
 
