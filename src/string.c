@@ -36,7 +36,7 @@ void* memchr(const void* s, int c, size_t n)
     {
         if (*(unsigned char*)s == (unsigned char)c)
         {
-            return s;
+            return (void*)s;
         }
 
         s++;
@@ -142,7 +142,7 @@ char* strcat(char* s1, const char* s2)
 
     while (*s1++);
     s1--;
-    while (*s1++ = *s2++);
+    while ((*s1++ = *s2++));
 
     return backup;
 }
@@ -158,7 +158,7 @@ char* strchr(const char* s, int c)
     {
         if (*s == (char)c)
         {
-            return s;
+            return (char*)s;
         }
         
         s++;
@@ -200,7 +200,7 @@ char* strcpy(char* s1, const char* s2)
 {
     char* backup = s1;
 
-    while (*s1++ = *s2++);
+    while ((*s1++ = *s2++));
 
     return backup;
 }
@@ -238,7 +238,7 @@ size_t strcspn(const char* s1, const char* s2)
 // pointer and sets errno to indicate the error.
 char* strdup(const char* s1)
 {
-    assert(0 & "strdup not implemented, requires malloc");
+    assert(0 && "strdup not implemented, requires malloc");
 
     return NULL;
 }
@@ -267,7 +267,7 @@ char* strdup(const char* s1)
 // indicate an error.
 char* strerror(int error)
 {
-    assert(0 & "strerror not implemented, requires errorno");
+    assert(0 && "strerror not implemented, requires errorno");
 
     return NULL;
 }
@@ -350,7 +350,7 @@ char* strncpy(char* s1, const char* s2, size_t n)
 {
     char* backup = s1;
 
-    while (*s1++ = *s2++ && n--);
+    while ((*s1++ = *s2++ && n--));
 
     return backup;
 }
@@ -369,7 +369,7 @@ char* strpbrk(const char* s1, const char* s2)
         {
             if (*s1 == s2[i])
             {
-                return s1;
+                return (char*)s1;
             }
         }
 
@@ -390,7 +390,7 @@ char* strrchr(const char* s, int c)
     {
         if (*s == (char)c)
         {
-            last = s;
+            last = (char*)s;
         }
 
         s++;
@@ -445,7 +445,7 @@ char* strstr(const char* s1, const char* s2)
         {
             if (s2[j] == 0)
             {
-                return s1 + i;
+                return (char*)s1 + i;
             }
 
             if (s1[i + j] == 0)
@@ -515,7 +515,7 @@ char* strstr(const char* s1, const char* s2)
 // pointer when no token is found.
 char* strtok(char* s1, const char* s2)
 {
-    assert(0 & "Not Yet Implemented");
+    assert(0 && "Not Yet Implemented");
 }
 
 // A sequence of calls to strtok() breaks the string pointed to by s1 into a
@@ -570,5 +570,5 @@ char* strtok(char* s1, const char* s2)
 // pointer when no token is found.
 char* strtok_r(char* s1, const char* s2, char** lasts)
 {
-    assert(0 & "Not Yet Implemented");
+    assert(0 && "Not Yet Implemented");
 }
