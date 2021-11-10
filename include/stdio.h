@@ -18,6 +18,8 @@ static FILE STDERR_FILE = {.fd = 2};
 #define stderr (&STDERR_FILE)
 
 int fprintf(FILE* stream, const char *format, ...);
+int raw_fprintf(int fd, const char *format, ...);
+
 
 int sprintf(char* s, const char *format, ...);
 

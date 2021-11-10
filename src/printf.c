@@ -233,6 +233,15 @@ int fprintf(FILE* stream, const char *format, ...)
     return index;
 }
 
+#define RAW_FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, fd)
+
+int raw_fprintf(int fd, const char *format, ...)
+{
+    PRINTF_IMPL(RAW_FPRINTF_HELPER)
+
+    return index;
+}
+
 // Sput implementation for sprintf
 void local_sput(const char* data, char** dest)
 {
