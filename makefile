@@ -1,9 +1,9 @@
-CC = clang
-CFLAGS = --target=riscv64 -march=rv64gc -mno-relax -fPIC
-INCLUDE = 
+CC = clang-11
+CFLAGS = --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax -fPIC -fdata-sections -ffunction-sections
+INCLUDE = -isystem ./include
 
-LINK = ld.lld
-LINKFLAGS = -r
+LINK = ar
+LINKFLAGS = rvs
 
 INCLUDES = 
 
@@ -18,8 +18,8 @@ LIBS = $(patsubst %,$(LIB_DIR)/%,$(_LIBS))
 _OBJ = string.o syscalls.o printf.o fileio.o alloc.o
 OBJ = $(patsubst %,$(BUILD_DIR)/%,$(_OBJ))
 
-$(OUTPUT_DIR)/libc : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
-	$(LINK) $(LINKFLAGS) $(OBJ) $(LIBS) -o $@
+$(OUTPUT_DIR)/libc.a : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
+	$(LINK) $(LINKFLAGS) $@ $(OBJ) $(LIBS)
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(INCLUDES)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
