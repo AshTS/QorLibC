@@ -251,22 +251,24 @@ void printf_helper(char* buffer, unsigned int* index, char c, int fd)
     }
 }
 
-#define FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, stream->fd)
+#define FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, stream->fd); length++
 
 int fprintf(FILE* stream, const char *format, ...)
 {
+    int length = 0;
     PRINTF_IMPL(FPRINTF_HELPER)
 
-    return index;
+    return length;
 }
 
-#define RAW_FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, fd)
+#define RAW_FPRINTF_HELPER(buffer, index, c) printf_helper(buffer, index, c, fd); length++
 
 int raw_fprintf(int fd, const char *format, ...)
 {
+    int length = 0;
     PRINTF_IMPL(RAW_FPRINTF_HELPER)
 
-    return index;
+    return length;
 }
 
 // Sput implementation for sprintf
@@ -292,15 +294,14 @@ void sprintf_helper(char* buffer, unsigned int* index, char c, char** dest)
     }
 }
 
-#define SPRINTF_HELPER(buffer, index, c) sprintf_helper(buffer, index, c, &dest)
+#define SPRINTF_HELPER(buffer, index, c) sprintf_helper(buffer, index, c, &dest); length++
 
 int sprintf(char* dest, const char *format, ...)
 {
+    int length = 0;
     PRINTF_IMPL(SPRINTF_HELPER)
-
-    int backup = index;
 
     SPRINTF_HELPER(buffer, &index, '\0');
 
-    return index;
+    return --index;
 }
