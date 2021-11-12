@@ -13,6 +13,8 @@ typedef long i64;
 typedef u16 pid_t;
 typedef u16 uid_t;
 
+typedef u64 ino_t;
+
 typedef u64 clock_t;
 
 #endif // _SYS_TYPES_H
