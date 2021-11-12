@@ -2,6 +2,7 @@
 
 #include "stdarg.h"
 #include "stdbool.h"
+#include "string.h"
 
 #include "sys/syscalls.h"
 
@@ -27,6 +28,9 @@
         \
     /* Last character (for two byte format specifiers) */     \
     char last_char = 0;     \
+\
+    /* Number of characters to pad the ouput to */ \
+    int padding_count = 0; \
         \
     /* Loop over every character in the input stream */       \
     char c = 1;     \
@@ -43,6 +47,8 @@
                 last_char = c;      \
         \
                 fmt_index = 0;      \
+                \
+                padding_count = 0; \
         \
                 continue;       \
             }       \
@@ -62,10 +68,14 @@
                 }       \
         \
                 int counter = 1;        \
+                int j = 1; \
                 while (counter <= i / 10)       \
                 {       \
                     counter *= 10;      \
+                    j += 1; \
                 }       \
+        \
+                for (; j < padding_count; j++) { helper(buffer, &index, ' '); } \
         \
                 if (fmt_index > 1)      \
                 {       \
@@ -125,10 +135,14 @@
                 helper(buffer, &index, 'x');     \
         \
                 unsigned long counter = 1;      \
+                int j = 1; \
                 while (counter <= i / 16)       \
                 {       \
                     counter *= 16;      \
+                    j += 1; \
                 }       \
+        \
+                for (; j < padding_count; j++) { helper(buffer, &index, ' '); } \
         \
                 while (counter >= 1)        \
                 {       \
@@ -152,10 +166,14 @@
                 unsigned int i = va_arg(args, unsigned int);        \
         \
                 unsigned int counter = 1;       \
+                int j = 1; \
                 while (counter <= i / 16)       \
                 {       \
                     counter *= 16;      \
+                    j += 1; \
                 }       \
+        \
+                for (; j < padding_count; j++) { helper(buffer, &index, ' '); } \
         \
                 while (counter >= 1)        \
                 {       \
@@ -178,6 +196,9 @@
             {       \
                 const char* s = va_arg(args, const char*);      \
         \
+                for (int i = 0; s[i] != 0; i++) { padding_count --; } \
+                for (int i = 0; i < padding_count; i++) { helper(buffer, &index, ' '); } \
+        \
                 while (*s)      \
                 {       \
                     helper(buffer, &index, *(s++));      \
@@ -188,9 +209,15 @@
             {       \
                 int c = va_arg(args, int);      \
         \
+                for (int i = 1; i < padding_count; i++) { helper(buffer, &index, ' '); } \
                 helper(buffer, &index, (char)c);     \
                 next_format_specifier = false;      \
             }       \
+            else if (c >= '0' && c <= '9') \
+            { \
+                padding_count *= 10; \
+                padding_count += (c - '0'); \
+            } \
             long_fmt_spec[fmt_index++] = c;     \
             last_char = c;      \
             continue;       \
