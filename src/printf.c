@@ -114,10 +114,14 @@
                 }       \
         \
                 long counter = 1;       \
+                int j = 1; \
                 while (counter <= i / 10)       \
                 {       \
                     counter *= 10;      \
+                    j += 1; \
                 }       \
+        \
+                for (; j < padding_count; j++) { helper(buffer, &index, ' '); } \
         \
                 while (counter >= 1)        \
                 {       \
