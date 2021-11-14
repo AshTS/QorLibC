@@ -246,8 +246,8 @@ void free(void *ptr)
     {
         if ((walk->flags & CHUNK_VALID) == 0)
         {
-            printf("Free Hit an Invalid Chunk\n");
-            exit(-1);
+            // printf("Free Hit an Invalid Chunk at index %ld\n", ((void*)walk - heap_table) / sizeof(MallocChunk));
+            break;
         }
 
         if (!(walk->flags & CHUNK_FREE))
