@@ -12,6 +12,6 @@
 
 void* malloc(unsigned int size);
 void free(void* ptr);
-
+int rand();
 
 #endif
