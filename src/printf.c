@@ -177,7 +177,8 @@
                     j += 1; \
                 }       \
         \
-                for (; j < padding_count; j++) { helper(buffer, &index, ' '); } \
+                char padding_char = long_fmt_spec[0] == '0' ? '0' : ' '; \
+                for (; j < padding_count; j++) { helper(buffer, &index, padding_char); } \
         \
                 while (counter >= 1)        \
                 {       \
@@ -305,7 +306,7 @@ int sprintf(char* dest, const char *format, ...)
     int length = 0;
     PRINTF_IMPL(SPRINTF_HELPER)
 
-    SPRINTF_HELPER(buffer, &index, '\0');
+    *dest = 0;
 
-    return --index;
+    return length;
 }
