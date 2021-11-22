@@ -59,6 +59,6 @@ extern int pause();
 extern int kill(short pid, int signal);
 extern int sigaction(int signal, void* new_action, void* old_action);
 extern void sigreturn();
-extern void sync();
+extern int sync();
 
 #endif // _SYSCALLS_H
