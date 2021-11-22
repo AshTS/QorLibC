@@ -3,6 +3,8 @@
 #include "assert.h"
 #include "errno.h"
 
+static char* STRTOK_PTR = 0;
+
 // Copies bytes from memory area s2 into s1, stopping after the first occurrence
 // of byte c (converted to an unsigned char) is copied, or after n bytes are
 // copied, whichever comes first. If copying takes place between objects that
@@ -218,18 +220,18 @@ char* strcpy(char* s1, const char* s2)
 // no return value is reserved to indicate an error.
 size_t strcspn(const char* s1, const char* s2)
 {
-    for (int i = 0; 1; i++)
+    for (size_t i = 0; 1; i++)
     {
         int j = 0;
         for (; s2[j] != 0; j++)
         {
-            if (*s1 == s2[j])
+            if (s1[i] == s2[j])
             {
-                break;
+                return i;
             }
         }
 
-        if (s2[j] == 0)
+        if (s1[i] == 0)
         {
             return i;
         }
@@ -502,6 +504,8 @@ char* strpbrk(const char* s1, const char* s2)
             {
                 return (char*)s1;
             }
+
+            i++;
         }
 
         s1++;
@@ -555,7 +559,7 @@ size_t strspn(const char* s1, const char* s2)
             break;
         }
 
-        i++;
+        len++;
     }
 
     return len;
@@ -646,7 +650,38 @@ char* strstr(const char* s1, const char* s2)
 // pointer when no token is found.
 char* strtok(char* s1, const char* s2)
 {
-    assert(0 && "Not Yet Implemented");
+    // Recover the previous starting point if it was cached
+    if (s1 == NULL)
+    {
+        s1 = STRTOK_PTR;
+    }
+
+    if (s1 == NULL || *s1 == 0)
+    {
+        return NULL;
+    }
+
+    size_t offset = strspn(s1, s2);
+
+    s1 += offset;
+
+    char* result = strpbrk(s1, s2);
+
+    if (result == NULL)
+    {
+        STRTOK_PTR = NULL;
+    }
+    else if (*result == 0)
+    {
+        STRTOK_PTR = s1 + offset;
+    }
+    else
+    {
+        *result = 0;
+        STRTOK_PTR = result + 1;
+    }
+
+    return s1;
 }
 
 // A sequence of calls to strtok() breaks the string pointed to by s1 into a
