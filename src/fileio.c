@@ -27,11 +27,11 @@ FILE* fopen(const char* name, const char* mode)
 {
     size_t raw_mode;
 
-    if (strcmp(mode, "w") == 0 || strcmp(mode, "wd") == 0)
+    if (strcmp(mode, "w") == 0 || strcmp(mode, "wb") == 0)
     {
         raw_mode = O_WRONLY | O_CREAT | O_TRUNC;
     }
-    else if (strcmp(mode, "r") == 0 || strcmp(mode, "rd") == 0)
+    else if (strcmp(mode, "r") == 0 || strcmp(mode, "rb") == 0)
     {
         raw_mode = O_RDONLY;
     }
@@ -67,6 +67,20 @@ FILE* fopen(const char* name, const char* mode)
 size_t fread(void* ptr, size_t size, size_t nitems, FILE* stream)
 {
     int result = read(stream->fd, ptr, size * nitems);
+
+    if (result < 0)
+    {
+        errno = -result;
+        return 0;
+    }
+
+    return result / size;
+}
+
+
+size_t fwrite(const void* ptr, size_t size, size_t nitems, FILE * stream)
+{
+    int result = write(stream->fd, ptr, size * nitems);
 
     if (result < 0)
     {

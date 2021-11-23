@@ -15,7 +15,7 @@ SRC_DIR = src
 _LIBS = 
 LIBS = $(patsubst %,$(LIB_DIR)/%,$(_LIBS))
 
-_OBJ = string.o syscalls.o printf.o fileio.o alloc.o start.o dirent.o rand.o
+_OBJ = string.o syscalls.o printf.o fileio.o alloc.o start.o dirent.o rand.o errno.o
 OBJ = $(patsubst %,$(BUILD_DIR)/%,$(_OBJ))
 
 $(OUTPUT_DIR)/libc.a : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
