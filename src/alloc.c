@@ -4,7 +4,7 @@
 #include "sys/syscalls.h"
 
 #define PAGESIZE 4096
-#define INITIAL_HEAP PAGESIZE
+#define INITIAL_HEAP (8 * PAGESIZE)
 
 #ifdef DEBUG
 #define DEBUG_PRINT(...) printf(__VA_ARGS__)
