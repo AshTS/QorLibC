@@ -10,8 +10,12 @@
 
 #define MB_CUR_MAX
 
+#include "stddef.h"
+
 void* malloc(unsigned int size);
 void free(void* ptr);
 int rand();
+
+void qsort(void* base, size_t nmemb, size_t size, int (*compar)(const void*, const void*));
 
 #endif
