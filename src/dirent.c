@@ -6,7 +6,7 @@
 
 int closedir(DIR* directory)
 {
-    int result = close(directory->fd);
+    int result = sys_close(directory->fd);
 
     free(directory);
 
@@ -21,7 +21,7 @@ int closedir(DIR* directory)
 
 DIR* opendir(const char* name)
 {
-    int fd = open(name, O_RDONLY);
+    int fd = sys_open(name, O_RDONLY);
     if (fd < 0)
     {
         errno = -fd;
@@ -53,7 +53,7 @@ struct dirent* readdir(DIR* directory)
         return NULL;
     }
 
-    long bytes_read = getdents(directory->fd, directory->buffer, DIR_READ_BUFFER);
+    long bytes_read = sys_getdents(directory->fd, directory->buffer, DIR_READ_BUFFER);
 
     if (bytes_read < 0)
     {

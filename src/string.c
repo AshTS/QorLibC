@@ -737,4 +737,5 @@ char* strtok(char* s1, const char* s2)
 char* strtok_r(char* s1, const char* s2, char** lasts)
 {
     assert(0 && "Not Yet Implemented");
+    return 0;
 }

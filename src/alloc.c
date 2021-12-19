@@ -89,7 +89,7 @@ void expand_malloc(unsigned int pages)
     DEBUG_PRINT("Expanding malloc space by %i pages\n", pages);
 
     // Map the next segment of malloc memory
-    void* segment = mmap(0, PAGESIZE * pages, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
+    void* segment = sys_mmap(0, PAGESIZE * pages, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
 
     heap_size += PAGESIZE * pages;
 
@@ -101,7 +101,7 @@ void expand_malloc(unsigned int pages)
     if (walk->flags & CHUNK_VALID)
     {
         eprintf("All Malloc Chunks Used\n");
-        exit(-1);
+        sys_exit(-1);
     }
 
     do
@@ -127,10 +127,10 @@ void *malloc(unsigned int size)
     DEBUG_PRINT("malloc(%i) => ", size);
     if (heap_start == 0)
     {
-        heap_start = mmap(0, INITIAL_HEAP, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
+        heap_start = sys_mmap(0, INITIAL_HEAP, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
         heap_size = INITIAL_HEAP;
 
-        heap_table = mmap(0, PAGESIZE * 4, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
+        heap_table = sys_mmap(0, PAGESIZE * 4, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
         heap_table_size = PAGESIZE * 4;
 
         MallocChunk *walk = (MallocChunk *)heap_table;
@@ -158,7 +158,7 @@ void *malloc(unsigned int size)
         if ((walk->flags & CHUNK_VALID) == 0)
         {
             printf("Malloc Hit an Invalid Chunk\n");
-            exit(-1);
+            sys_exit(-1);
         }
 
         if (walk->flags & CHUNK_FREE)

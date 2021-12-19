@@ -7,7 +7,7 @@
 
 int fclose(FILE* f)
 {
-    int result = close(f->fd);
+    int result = sys_close(f->fd);
 
     if (result < 0)
     {
@@ -50,7 +50,7 @@ FILE* fopen(const char* name, const char* mode)
         return 0;
     }
 
-    int result = open(name, raw_mode);
+    int result = sys_open(name, raw_mode);
 
     if (result < 0)
     {
@@ -66,7 +66,7 @@ FILE* fopen(const char* name, const char* mode)
 
 size_t fread(void* ptr, size_t size, size_t nitems, FILE* stream)
 {
-    int result = read(stream->fd, ptr, size * nitems);
+    int result = sys_read(stream->fd, ptr, size * nitems);
 
     if (result < 0)
     {
@@ -80,7 +80,7 @@ size_t fread(void* ptr, size_t size, size_t nitems, FILE* stream)
 
 size_t fwrite(const void* ptr, size_t size, size_t nitems, FILE * stream)
 {
-    int result = write(stream->fd, ptr, size * nitems);
+    int result = sys_write(stream->fd, ptr, size * nitems);
 
     if (result < 0)
     {

@@ -1,3 +1,3 @@
 #include "errno.h"
 
-extern int errno = 0;
+int errno = 0;

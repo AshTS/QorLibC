@@ -241,7 +241,7 @@ void local_put(const char* data, int fd)
         count++;
     }
 
-    write(fd, (void*)data, count);
+    sys_write(fd, (void*)data, count);
 }
 
 // Helper function for printf
