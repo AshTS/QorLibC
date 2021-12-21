@@ -125,4 +125,6 @@ extern int errno;
 #define EISNAM 120 /* Is a named type file */
 #define EREMOTEIO 121 /* Remote I/O error */
 
+#define ENOIOCTLCMD	515 /* No ioctl command */
+
 #endif

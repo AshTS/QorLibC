@@ -24,10 +24,7 @@
 #define SEEK_CUR 2
 #define SEEK_END 4
 
-#define RTC_RD_TIME      0x7009
-#define RTC_RD_TIMESTAMP 0x70FF
-
-#define FB_FLUSH         0x46FF
+#include "ioctl.h"
 
 struct time_repr
 {

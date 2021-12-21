@@ -15,13 +15,16 @@ SRC_DIR = src
 _LIBS = 
 LIBS = $(patsubst %,$(LIB_DIR)/%,$(_LIBS))
 
-_OBJ = string.o syscalls.o printf.o fileio.o alloc.o start.o dirent.o rand.o errno.o qsort.o unistd.o fcntl.o
+_OBJ = string.o syscalls.o printf.o fileio.o alloc.o start.o dirent.o rand.o errno.o qsort.o unistd.o fcntl.o termios_attr.o
 OBJ = $(patsubst %,$(BUILD_DIR)/%,$(_OBJ))
 
 $(OUTPUT_DIR)/libc.a : $(OUTPUT_DIR) $(BUILD_DIR) $(OBJ) $(LIBS)
 	$(LINK) $(LINKFLAGS) $@ $(OBJ) $(LIBS)
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.c $(INCLUDES)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(BUILD_DIR)/termios_%.o : $(SRC_DIR)/termios/%.c $(INCLUDES)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.s $(INCLUDES)
