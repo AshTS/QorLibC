@@ -133,8 +133,6 @@ sys_execve:
 .section .text.exit
 .globl sys_exit
 sys_exit:
-.globl exit
-exit:
     li a7, 60
     ecall
     exit_loop:
