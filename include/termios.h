@@ -39,6 +39,8 @@ struct termios
 #define VEOL2 16
 
 // Input Flags
+#define ICRNL 0x00000100
+#define IXON 0x00000400
 
 // Output Flags
 
@@ -46,8 +48,9 @@ struct termios
 #define ISIG 0x00000001
 #define ICANON 0x00000002
 #define ECHO 0x00000008
+#define IEXTEN 0x00008000
 
-// Attribute Timings (Unused For Right Now)
+// Attribute Timings
 #define TCSANOW 0
 #define TCSADRAIN 2
 #define TCSAFLUSH 4
