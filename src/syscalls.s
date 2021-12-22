@@ -116,6 +116,13 @@ sys_nanosleep:
     ecall
     ret
 
+.section .text.getpid
+.globl sys_getpid
+sys_getpid:
+    li a7, 39
+    ecall
+    ret
+
 .section .text.fork
 .globl sys_fork
 sys_fork:

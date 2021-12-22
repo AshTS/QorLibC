@@ -57,5 +57,6 @@ extern int sys_kill(short pid, int signal);
 extern int sys_sigaction(int signal, void* new_action, void* old_action);
 extern void sys_sigreturn();
 extern int sys_sync();
+extern int sys_getpid();
 
 #endif // _SYSCALLS_H
