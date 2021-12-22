@@ -10,5 +10,7 @@
 #define TCSETS           0x5402
 #define TCSETSW          0x5403
 #define TCSETSF          0x5404
+#define TIOCGPGRP        0x540F
+#define TIOCSPGRP        0x5410
 
 #endif // _SYS_IOCTL_H
