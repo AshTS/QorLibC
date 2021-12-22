@@ -43,6 +43,7 @@ struct termios
 // Output Flags
 
 // Local Flags
+#define ISIG 0x00000001
 #define ICANON 0x00000002
 #define ECHO 0x00000008
 
