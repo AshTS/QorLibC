@@ -57,7 +57,7 @@
         }       \
         else        \
         {       \
-            if (c == 'i')       \
+            if (c == 'i' || c == 'd')       \
             {       \
                 int i = va_arg(args, int);      \
         \
