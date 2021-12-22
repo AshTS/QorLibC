@@ -9,7 +9,7 @@ typedef uint32_t tcflag_t;
 
 struct termios
 {
-    tcflag_t c_iflat;
+    tcflag_t c_iflag;
     tcflag_t c_oflag;
     tcflag_t c_cflag;
     tcflag_t c_lflag;
