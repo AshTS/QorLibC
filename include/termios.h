@@ -43,6 +43,7 @@ struct termios
 #define IXON 0x00000400
 
 // Output Flags
+#define OPOST 0x00000001
 
 // Local Flags
 #define ISIG 0x00000001
