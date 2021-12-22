@@ -187,6 +187,14 @@ sys_mkdir:
     ecall
     ret
 
+.section .text.setpgid
+.globl sys_setpgid
+sys_setpgid:
+    li a7, 109
+    ecall
+    ret
+
+
 .section .text.sync
 .globl sys_sync
 sys_sync:
