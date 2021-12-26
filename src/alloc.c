@@ -130,8 +130,8 @@ void *malloc(unsigned int size)
         heap_start = sys_mmap(0, INITIAL_HEAP, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
         heap_size = INITIAL_HEAP;
 
-        heap_table = sys_mmap(0, PAGESIZE * 4, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
-        heap_table_size = PAGESIZE * 4;
+        heap_table = sys_mmap(0, PAGESIZE * 16, PROT_READ | PROT_WRITE, MAP_ANONYMOUS, 0, 0);
+        heap_table_size = PAGESIZE * 16;
 
         MallocChunk *walk = (MallocChunk *)heap_table;
 
