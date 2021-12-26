@@ -20,4 +20,8 @@ void qsort(void* base, size_t nmemb, size_t size, int (*compar)(const void*, con
 
 void exit(int returncode);
 
+extern void (*exit_fn_ptr)(void);
+
+int atexit(void (*function)(void));
+
 #endif

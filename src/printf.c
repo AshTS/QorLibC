@@ -1,5 +1,6 @@
 #include "stdio.h"
 
+#include "errno.h"
 #include "stdarg.h"
 #include "stdbool.h"
 #include "string.h"
@@ -57,7 +58,7 @@
         }       \
         else        \
         {       \
-            if (c == 'i')       \
+            if (c == 'i' || c == 'd')       \
             {       \
                 int i = va_arg(args, int);      \
         \
@@ -309,4 +310,9 @@ int sprintf(char* dest, const char *format, ...)
     *dest = 0;
 
     return length;
+}
+
+void perror(const char *s)
+{
+    printf("%s%s\n", s, strerror(errno));
 }

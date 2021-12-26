@@ -24,10 +24,8 @@
 #define SEEK_CUR 2
 #define SEEK_END 4
 
-#define RTC_RD_TIME      0x7009
-#define RTC_RD_TIMESTAMP 0x70FF
-
-#define FB_FLUSH         0x46FF
+#include "ioctl.h"
+#include "types.h"
 
 struct time_repr
 {
@@ -60,5 +58,7 @@ extern int sys_kill(short pid, int signal);
 extern int sys_sigaction(int signal, void* new_action, void* old_action);
 extern void sys_sigreturn();
 extern int sys_sync();
+extern int sys_getpid();
+extern int sys_setpgid(pid_t pid, pid_t pgid);
 
 #endif // _SYSCALLS_H

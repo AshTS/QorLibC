@@ -116,6 +116,13 @@ sys_nanosleep:
     ecall
     ret
 
+.section .text.getpid
+.globl sys_getpid
+sys_getpid:
+    li a7, 39
+    ecall
+    ret
+
 .section .text.fork
 .globl sys_fork
 sys_fork:
@@ -133,8 +140,6 @@ sys_execve:
 .section .text.exit
 .globl sys_exit
 sys_exit:
-.globl exit
-exit:
     li a7, 60
     ecall
     exit_loop:
@@ -181,6 +186,14 @@ sys_mkdir:
     li a7, 83
     ecall
     ret
+
+.section .text.setpgid
+.globl sys_setpgid
+sys_setpgid:
+    li a7, 109
+    ecall
+    ret
+
 
 .section .text.sync
 .globl sys_sync
