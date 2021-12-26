@@ -39,6 +39,9 @@ struct termios
 #define VEOL2 16
 
 // Input Flags
+#define BRKINT 0x00000002
+#define INPCK 0x00000010
+#define ISTRIP 0x00000020
 #define ICRNL 0x00000100
 #define IXON 0x00000400
 
@@ -51,10 +54,14 @@ struct termios
 #define ECHO 0x00000008
 #define IEXTEN 0x00008000
 
+// Control Flags
+#define CS8 0x00000030
+
 // Attribute Timings
 #define TCSANOW 0
 #define TCSADRAIN 2
 #define TCSAFLUSH 4
+
 
 // Get the state of the terminal settings for the file descriptor and put it in the given pointer
 int tcgetattr(int fd, struct termios* ptr);
