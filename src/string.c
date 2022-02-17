@@ -246,9 +246,10 @@ size_t strcspn(const char* s1, const char* s2)
 // pointer and sets errno to indicate the error.
 char* strdup(const char* s1)
 {
-    assert(0 && "strdup not implemented, requires malloc");
+    char* buffer = malloc(strlen(s1) + 1);
+    strcpy(buffer, s1);
 
-    return NULL;
+    return buffer;
 }
 
 // Maps the error number in errnum to a locale-dependent error message string

@@ -31,6 +31,11 @@ FILE* fopen(const char*, const char*);
 size_t fread(void*, size_t, size_t, FILE*);
 size_t fwrite(const void*, size_t, size_t, FILE *);
 
+int getchar(void);
+int fgetc(FILE* stream);
+char* gets(char* buffer);
+char* fgets(char* buffer, int n, FILE* stream);
+
 void perror(const char *s);
 
 #endif // _STDIO_H
