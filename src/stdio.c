@@ -16,7 +16,7 @@ int fgetc(FILE* stream)
     }
     else
     {
-        return 4;
+        return 404;
     }
 }
 
@@ -29,7 +29,7 @@ char* gets(char* buffer)
     while (1)
     {
         c = getchar();
-        if (c == 4)
+        if (c == 404)
         {
             if (ptr == buffer)
             {
@@ -61,7 +61,7 @@ char* fgets(char* buffer, int n, FILE* stream)
     {
         c = fgetc(stream);
 
-        if (c == 4)
+        if (c == 404)
         {
             if (ptr == buffer)
             {
@@ -75,7 +75,8 @@ char* fgets(char* buffer, int n, FILE* stream)
         }
         else if (c == '\n')
         {
-            *ptr = 0;
+            *ptr = c;
+            *(ptr + 1) = 0; 
             return buffer;
         }
         
