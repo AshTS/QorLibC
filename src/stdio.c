@@ -83,4 +83,6 @@ char* fgets(char* buffer, int n, FILE* stream)
         ptr++;
         n--;
     }
+
+    return buffer;
 }
