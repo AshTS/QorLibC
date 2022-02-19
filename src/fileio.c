@@ -40,6 +40,10 @@ FILE* fopen(const char* name, const char* mode)
     {
         raw_mode = O_RDWR | O_CREAT;
     }
+    else if (strcmp(mode, "a") == 0 || strcmp(mode, "ab") == 0)
+    {
+        raw_mode = O_RDWR | O_APPEND;
+    }
     else if (strcmp(mode, "a+") == 0 || strcmp(mode, "ab+") == 0 || strcmp(mode, "a+b") == 0)
     {
         raw_mode = O_RDWR | O_APPEND | O_CREAT;
