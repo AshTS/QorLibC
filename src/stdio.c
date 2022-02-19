@@ -57,7 +57,7 @@ char* fgets(char* buffer, int n, FILE* stream)
     char c;
     char* ptr = buffer;
 
-    while (n > 0)
+    while (n > 1)
     {
         c = fgetc(stream);
 
@@ -84,5 +84,6 @@ char* fgets(char* buffer, int n, FILE* stream)
         n--;
     }
 
+    *ptr = 0;
     return buffer;
 }
