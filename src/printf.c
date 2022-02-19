@@ -314,5 +314,14 @@ int sprintf(char* dest, const char *format, ...)
 
 void perror(const char *s)
 {
-    printf("%s%s\n", s, strerror(errno));
+    if (s != NULL)
+    {
+        if (*s != 0)
+        {
+            printf("%s: ", s);
+
+        }
+    }
+
+    printf("%s\n", strerror(errno));
 }
