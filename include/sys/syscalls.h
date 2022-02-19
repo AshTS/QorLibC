@@ -24,6 +24,10 @@
 #define SEEK_CUR 2
 #define SEEK_END 4
 
+#define REBOOT_MAGIC1 0xfee1dead
+#define REBOOT_MAGIC2 0x516f7200
+#define REBOOT_CMD_HALT 0xcdef0123
+
 #include "ioctl.h"
 #include "types.h"
 
@@ -41,6 +45,7 @@ extern unsigned int sys_read(int fd, void *buffer, int size);
 extern unsigned int sys_fork();
 extern unsigned int sys_execve(const char *path, const char **argv, const char **envp);
 extern unsigned int sys_wait(int *wstatus);
+extern unsigned int sys_reboot(int magic1, int magic2, int cmd, void* arg);
 extern unsigned int sys_getcwd(void *buffer, int size);
 extern void *sys_mmap(void *start, int length, int prot, int flags, int fd, int off);
 extern unsigned int sys_munmap(void *buffer, int size);

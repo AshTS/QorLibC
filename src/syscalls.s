@@ -201,3 +201,10 @@ sys_sync:
     li a7, 162
     ecall
     ret
+
+.section .text.reboot
+.globl sys_reboot
+sys_reboot:
+    li a7, 169
+    ecall
+    ret
