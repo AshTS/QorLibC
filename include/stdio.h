@@ -26,10 +26,15 @@ int sprintf(char* s, const char *format, ...);
 #define printf(...) fprintf (stdout, __VA_ARGS__)
 #define eprintf(...) fprintf (stderr, __VA_ARGS__)
 
+#define SEEK_SET 1
+#define SEEK_CUR 2
+#define SEEK_END 4
+
 int fclose(FILE*);
 FILE* fopen(const char*, const char*);
 size_t fread(void*, size_t, size_t, FILE*);
 size_t fwrite(const void*, size_t, size_t, FILE *);
+int fseek(FILE* stream, long offset, int origin);
 
 int getchar(void);
 int fgetc(FILE* stream);

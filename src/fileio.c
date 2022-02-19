@@ -94,3 +94,17 @@ size_t fwrite(const void* ptr, size_t size, size_t nitems, FILE * stream)
 
     return result / size;
 }
+
+
+int fseek(FILE* stream, long offset, int origin)
+{
+    int result = sys_lseek(stream->fd, offset, origin);
+
+    if (result < 0)
+    {
+        errno = -result;
+        return 0;
+    }
+
+    return result;
+}
