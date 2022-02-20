@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax -fPIC -fdata-sections -ffunction-sections
+CFLAGS = --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax -fPIC -fdata-sections -ffunction-sections -O3
 INCLUDE = -isystem ./include
 
 LINK = ar
