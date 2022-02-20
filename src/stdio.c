@@ -22,7 +22,7 @@ int fgetc(FILE* stream)
 
 char* gets(char* buffer)
 {
-    char c;
+    int c;
 
     char* ptr = buffer;
 
@@ -43,7 +43,8 @@ char* gets(char* buffer)
         }
         else if (c == '\n')
         {
-            *ptr = 0;
+            *ptr = c;
+            *(ptr + 3) = 0; 
             return buffer;
         }
         
@@ -54,7 +55,7 @@ char* gets(char* buffer)
 
 char* fgets(char* buffer, int n, FILE* stream)
 {
-    char c;
+    int c;
     char* ptr = buffer;
 
     while (n > 1)
