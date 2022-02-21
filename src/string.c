@@ -280,32 +280,32 @@ char* strerror(int error)
 {
     switch (error)
     {
-        TO_STR_CASE(EPERM)
-        TO_STR_CASE(ENOENT)
-        TO_STR_CASE(ESRCH)
-        TO_STR_CASE(EINTR)
-        TO_STR_CASE(EIO)
-        TO_STR_CASE(ENXIO)
-        TO_STR_CASE(E2BIG)
-        TO_STR_CASE(ENOEXEC)
-        TO_STR_CASE(EBADF)
-        TO_STR_CASE(ECHILD)
-        TO_STR_CASE(EAGAIN)
-        TO_STR_CASE(ENOMEM)
-        TO_STR_CASE(EACCES)
-        TO_STR_CASE(EFAULT)
-        TO_STR_CASE(ENOTBLK)
-        TO_STR_CASE(EBUSY)
-        TO_STR_CASE(EEXIST)
-        TO_STR_CASE(EXDEV)
-        TO_STR_CASE(ENODEV)
-        TO_STR_CASE(ENOTDIR)
-        TO_STR_CASE(EISDIR)
-        TO_STR_CASE(EINVAL)
-        TO_STR_CASE(ENFILE)
-        TO_STR_CASE(EMFILE)
-        TO_STR_CASE(ENOTTY)
-        TO_STR_CASE(ETXTBSY)
+        case 0: return "Success";
+        case EPERM: return "Operation not permitted";
+        case ENOENT: return "No such file or directory";
+        case ESRCH: return "No such process";
+        case EINTR: return "Interrupted system call";
+        case EIO: return "Input/output error";
+        case ENXIO: return "No such device or address";
+        case E2BIG: return "Argument list too long";
+        case ENOEXEC: return "Exec format error";
+        case EBADF: return "Bad file descriptor";
+        case ECHILD: return "No child process";
+        case EAGAIN: return "Resource temporarily unavailable";
+        case ENOMEM: return "Cannot allocate memory";
+        case EACCES: return "Permission denied";
+        case EFAULT: return "Bad address";
+        case ENOTBLK: return "Block device required";
+        case EBUSY: return "Device or resource busy";
+        case EEXIST: return "File exists";
+        case EXDEV: return "Invalid cross-device link";
+        case ENODEV: return "No such device";
+        case ENOTDIR: return "Not a directory";
+        case EISDIR: return "Is a directory";
+        case EINVAL: return "Invalid argument";
+        case ENFILE: return "Too many open files in system";
+        case ENOTTY: return "Not a typewriter";
+        case ETXTBSY: return "Text file is busy";
         TO_STR_CASE(EFBIG)
         TO_STR_CASE(ENOSPC)
         TO_STR_CASE(ESPIPE)
