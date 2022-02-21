@@ -2,6 +2,7 @@
 
 #include "assert.h"
 #include "errno.h"
+#include "stdlib.h"
 
 static char* STRTOK_PTR = 0;
 

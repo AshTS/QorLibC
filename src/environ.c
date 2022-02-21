@@ -24,7 +24,7 @@ char* getenv(const char* name)
         if (memcmp(name_and_equals, environ[i], compare_length) == 0)
         {
             free(name_and_equals);
-            return environ[i] + compare_length;
+            return (char*)environ[i] + compare_length;
         }
     }
 

@@ -37,7 +37,7 @@ struct time_repr
     long tv_nsec;
 };
 
-extern unsigned int sys_exit(int val);
+extern  unsigned int _Noreturn sys_exit(int val);
 extern unsigned int sys_write(int fd, void* buffer, int size);
 extern unsigned int sys_open(const char* name, int open_mode);
 extern unsigned int sys_close(int fd);

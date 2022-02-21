@@ -13,7 +13,7 @@ time_t time(time_t* ptr)
 
     time_t result;
 
-    if (sys_ioctl(fd, RTC_RD_TIMESTAMP, &result) < 0)
+    if (sys_ioctl(fd, RTC_RD_TIMESTAMP, (long)&result) < 0)
     {
         return 1;
     }

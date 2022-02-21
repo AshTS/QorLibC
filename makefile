@@ -1,5 +1,6 @@
 CC = clang
 CFLAGS = --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax -fPIC -fdata-sections -ffunction-sections -O3
+ASMFLAGS = --target=riscv64 -march=rv64gc -mabi=lp64d -mno-relax -fPIC
 INCLUDE = -isystem ./include
 
 LINK = ar
@@ -28,7 +29,7 @@ $(BUILD_DIR)/termios_%.o : $(SRC_DIR)/termios/%.c $(INCLUDES)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(BUILD_DIR)/%.o : $(SRC_DIR)/%.s $(INCLUDES)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	$(CC) $(ASMFLAGS) -c $< -o $@
 
 $(BUILD_DIR) :
 	[ ! -d "$(BUILD_DIR)" ] && mkdir $(BUILD_DIR)

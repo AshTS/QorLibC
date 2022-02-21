@@ -84,7 +84,7 @@ size_t fread(void* ptr, size_t size, size_t nitems, FILE* stream)
 
 size_t fwrite(const void* ptr, size_t size, size_t nitems, FILE * stream)
 {
-    int result = sys_write(stream->fd, ptr, size * nitems);
+    int result = sys_write(stream->fd, (void*)ptr, size * nitems);
 
     if (result < 0)
     {

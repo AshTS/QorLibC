@@ -8,7 +8,7 @@
 // Get the state of the terminal settings for the file descriptor and put it in the given pointer
 int tcgetattr(int fd, struct termios* ptr)
 {
-    int result = sys_ioctl(fd, TCGETS, ptr);
+    int result = sys_ioctl(fd, TCGETS, (unsigned long)ptr);
 
     if (result < 0)
     {
@@ -33,7 +33,7 @@ int tcsetattr(int fd, int actions, const struct termios* ptr)
         timing = TCSETSF;
     }
 
-    int result = sys_ioctl(fd, timing, ptr);
+    int result = sys_ioctl(fd, timing, (unsigned long)ptr);
 
     if (result < 0)
     {

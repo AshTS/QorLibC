@@ -7,7 +7,7 @@ pid_t tcgetpgrp(int fd)
 {
     pid_t result;
 
-    int return_code = sys_ioctl(fd, TIOCGPGRP, &result);
+    int return_code = sys_ioctl(fd, TIOCGPGRP, (unsigned long)&result);
 
     if (return_code < 0)
     {
@@ -20,7 +20,7 @@ pid_t tcgetpgrp(int fd)
 
 int tcsetpgrp(int fd, pid_t pgid)
 {
-    int return_code = sys_ioctl(fd, TIOCSPGRP, &pgid);
+    int return_code = sys_ioctl(fd, TIOCSPGRP, (unsigned long)&pgid);
 
     if (return_code < 0)
     {

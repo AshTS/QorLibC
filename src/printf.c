@@ -22,7 +22,7 @@ enum parser_states { WAIT_FOR_PERCENT,
  READ_SPECIFIER
 };
 
-#define PRINTF_IMPL(helper) int index = 0;\
+#define PRINTF_IMPL(helper) unsigned int index = 0;\
     va_list args;\
     va_start(args, format);\
     \
@@ -44,7 +44,7 @@ enum parser_states { WAIT_FOR_PERCENT,
     char specifier;\
     \
     char c;\
-    while (c = *(format ++))\
+    while ((c = *(format ++)))\
     {\
         switch (state)\
         {\
