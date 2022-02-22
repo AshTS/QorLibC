@@ -536,8 +536,9 @@ void printf_helper(char* buffer, unsigned int* index, char c, int fd)
 {
     // sys_write(fd, (void*)&c, 1);
     
-    buffer[((*index)++) % (PRINTF_BUFFER_LEN - 1)] = c;
-    if (*index % (PRINTF_BUFFER_LEN - 1) == 0 || c == 0)
+    buffer[*index] = c;
+    (*index)++;
+    if (*index == 0 || c == 0)
     {
         local_put(buffer, fd);
 
