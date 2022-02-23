@@ -1,17 +1,21 @@
 #ifndef _STDIO_H
 #define _STDIO_H
 
+#include "stdbool.h"
 #include "stdint.h"
 #include "stddef.h"
 
 typedef struct FILE
 {
     uint32_t fd;
+    bool is_binary;
 } FILE;
 
-static FILE STDIN_FILE = {.fd = 0};
-static FILE STDOUT_FILE = {.fd = 1};
-static FILE STDERR_FILE = {.fd = 2};
+static FILE STDIN_FILE = {.fd = 0, .is_binary = false};
+static FILE STDOUT_FILE = {.fd = 1, .is_binary = false};
+static FILE STDERR_FILE = {.fd = 2, .is_binary = false};
+
+#define EOF 404
 
 #define stdin (&STDIN_FILE)
 #define stdout (&STDOUT_FILE)

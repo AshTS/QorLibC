@@ -54,6 +54,17 @@ FILE* fopen(const char* name, const char* mode)
         return 0;
     }
 
+    bool is_binary = false;
+
+    for (int i = 0; mode[i]; i++)
+    {
+        if (mode[i] == 'b')
+        {
+            is_binary = true;
+            break;
+        }
+    }
+
     int result = sys_open(name, raw_mode);
 
     if (result < 0)
@@ -64,6 +75,7 @@ FILE* fopen(const char* name, const char* mode)
 
     FILE* f = malloc(sizeof(FILE));
     f->fd = result;
+    f->is_binary = is_binary;
 
     return f;
 }

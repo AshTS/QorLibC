@@ -12,11 +12,16 @@ int fgetc(FILE* stream)
     char buf;
     if (fread(&buf, 1, 1, stream))
     {
+        if (!stream->is_binary && buf == 4)
+        {
+            return EOF;
+        }
+        
         return buf;
     }
     else
     {
-        return 404;
+        return EOF;
     }
 }
 
@@ -29,7 +34,7 @@ char* gets(char* buffer)
     while (1)
     {
         c = getchar();
-        if (c == 404)
+        if (c == EOF)
         {
             if (ptr == buffer)
             {
