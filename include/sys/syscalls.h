@@ -65,5 +65,8 @@ extern void sys_sigreturn();
 extern int sys_sync();
 extern int sys_getpid();
 extern int sys_setpgid(pid_t pid, pid_t pgid);
+extern int sys_sync();
+extern int sys_unlink(const char* path);
+extern int sys_rmdir(const char* path);
 
 #endif // _SYSCALLS_H

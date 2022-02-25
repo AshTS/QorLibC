@@ -187,6 +187,20 @@ sys_mkdir:
     ecall
     ret
 
+.section .text.rmdir
+.globl sys_rmdir
+sys_rmdir:
+    li a7, 84
+    ecall
+    ret
+
+.section .text.unlink
+.globl sys_unlink
+sys_unlink:
+    li a7, 87
+    ecall
+    ret
+
 .section .text.setpgid
 .globl sys_setpgid
 sys_setpgid:
