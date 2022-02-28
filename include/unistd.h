@@ -16,4 +16,7 @@ int64_t close(int fd);
 pid_t tcgetpgrp(int);
 int tcsetpgrp(int, pid_t);
 
+int64_t unlink(const char*);
+int64_t rmdir(const char*);
+
 #endif // _UNISTD_H

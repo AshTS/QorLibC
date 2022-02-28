@@ -41,3 +41,29 @@ int64_t close(int fd)
 
     return val;
 }
+
+int64_t unlink(const char* path)
+{
+    int64_t val = sys_unlink(path);
+
+    if (val < 0)
+    {
+        errno = -val;
+        return -1;
+    }
+
+    return val;
+}
+
+int64_t rmdir(const char* path)
+{
+    int64_t val = sys_rmdir(path);
+
+    if (val < 0)
+    {
+        errno = -val;
+        return -1;
+    }
+
+    return val;
+}
