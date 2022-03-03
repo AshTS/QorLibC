@@ -39,6 +39,13 @@ sys_close:
     ecall
     ret
 
+.section .text.stat
+.globl sys_stat
+sys_stat:
+    li a7, 4
+    ecall
+    ret
+
 .section .text.lseek
 .globl sys_lseek
 sys_lseek:

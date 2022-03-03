@@ -30,6 +30,7 @@
 
 #include "ioctl.h"
 #include "types.h"
+#include "stat.h"
 
 struct time_repr
 {
@@ -41,6 +42,7 @@ extern  unsigned int _Noreturn sys_exit(int val);
 extern unsigned int sys_write(int fd, void* buffer, int size);
 extern unsigned int sys_open(const char* name, int open_mode);
 extern unsigned int sys_close(int fd);
+extern unsigned int sys_stat(const char* pathname, struct stat* buffer);
 extern unsigned int sys_read(int fd, void *buffer, int size);
 extern unsigned int sys_fork();
 extern unsigned int sys_execve(const char *path, const char **argv, const char **envp);
