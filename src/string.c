@@ -158,17 +158,19 @@ char* strcat(char* s1, const char* s2)
 // Returns a pointer to the byte, or a null pointer if the byte was not found.
 char* strchr(const char* s, int c)
 {
+    char* last = NULL;
+
     while (*s)
     {
         if (*s == (char)c)
         {
-            return (char*)s;
+            last = (char*)s;
         }
         
         s++;
     }
 
-    return NULL;
+    return last;
 }
 
 // Compares the string pointed to by s1 to the string pointed to by s2.
