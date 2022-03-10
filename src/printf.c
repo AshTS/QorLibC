@@ -8,7 +8,7 @@
 
 #include "sys/syscalls.h"
 
-#define PRINTF_BUFFER_LEN 64
+#define PRINTF_BUFFER_LEN 256
 
 enum parser_states { WAIT_FOR_PERCENT,
  READ_FLAGS_FIRST, 
