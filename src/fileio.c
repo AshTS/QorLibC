@@ -120,3 +120,16 @@ int fseek(FILE* stream, long offset, int origin)
 
     return result;
 }
+
+int puts(const char* str)
+{
+    int result = fwrite(str, strlen(str), 1, stdin);
+    
+    if (result < 0)
+    {
+        return result;
+    }
+    
+    result = fwrite("\n", 1, 1, stdin);
+    return result;
+}

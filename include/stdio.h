@@ -47,4 +47,6 @@ char* fgets(char* buffer, int n, FILE* stream);
 
 void perror(const char *s);
 
+int puts(const char* str);
+
 #endif // _STDIO_H
