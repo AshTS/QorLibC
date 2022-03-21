@@ -18,3 +18,14 @@ int rand()
 
     return ((int)rand0 << 16) | ((int)rand1);
 }
+
+void srand(unsigned int seed)
+{
+    if (seed == 0)
+    {
+        seed = 1;
+    }
+
+    rand0 = 0xF72B ^ (seed & 0xFF);
+    rand1 = 0x9F80 ^ ((seed >> 16) & 0xFF);
+}

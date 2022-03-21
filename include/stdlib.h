@@ -17,6 +17,7 @@ extern const char** environ;
 void* malloc(unsigned int size);
 void free(void* ptr);
 int rand();
+void srand(unsigned int seed);
 
 void qsort(void* base, size_t nmemb, size_t size, int (*compar)(const void*, const void*));
 
